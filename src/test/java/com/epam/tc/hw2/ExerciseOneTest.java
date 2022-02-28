@@ -28,11 +28,11 @@ public class ExerciseOneTest {
         soft.assertThat(driver.findElement(By.className("navbar-right")).getText()).contains("ROMAN IOVLEV");
         //    5. Assert that there are 4 items on the header section are displayed and they have proper texts
         WebElement navigationMenu = driver.findElement(By.className("navbar-nav"));
-        soft.assertThat(driver.findElement(By.xpath("//*[text()='Home']")).getText()).isEqualTo("Home");
-        soft.assertThat(driver.findElement(By.xpath("//*[text()='Contact form']")).getText()).isEqualTo("Contact form");
+        soft.assertThat(driver.findElement(By.xpath("//*[text()='Home']")).getText()).isEqualTo("HOME");
+        soft.assertThat(driver.findElement(By.xpath("//*[text()='Contact form']")).getText()).isEqualTo("CONTACT FORM");
         soft.assertThat(driver.findElement(By.xpath("//*[text()='Service']")).getText()).isEqualTo("Service");
         soft.assertThat(driver.findElement(By.xpath("//*[text()='Metals & Colors']")).getText())
-            .isEqualTo("Metals & Colors");
+            .isEqualTo("METALS & COLORS");
         //    6. Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> benefits = driver.findElements(By.className("benefit-icon"));
         soft.assertThat(benefits.size()).isEqualTo(4);
@@ -58,10 +58,12 @@ public class ExerciseOneTest {
         //    11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         WebElement sidebar = driver.findElement(By.className("sidebar-menu"));
         soft.assertThat(sidebar.findElement(By.linkText("Home")).getText()).isEqualTo("Home");
-        soft.assertThat(sidebar.findElement(By.linkText("Contact form")).getText()).isEqualTo("Contact Form");
+        soft.assertThat(sidebar.findElement(By.linkText("Contact form")).getText()).isEqualTo("Contact form");
         soft.assertThat(sidebar.findElement(By.linkText("Service")).getText()).isEqualTo("Service");
         soft.assertThat(sidebar.findElement(By.linkText("Metals & Colors")).getText()).isEqualTo("Metals & Colors");
         soft.assertThat(sidebar.findElement(By.linkText("Elements packs")).getText()).isEqualTo("Elements packs");
+
+        soft.assertAll();
         //    12. Close Browser
         driver.quit();
     }
