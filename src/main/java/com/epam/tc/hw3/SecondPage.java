@@ -1,5 +1,4 @@
 package com.epam.tc.hw3;
-
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
