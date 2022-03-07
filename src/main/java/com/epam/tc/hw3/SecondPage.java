@@ -8,16 +8,16 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SecondPage {
 
-    @FindBy (className = "label-checkbox")
+    @FindBy(className = "label-checkbox")
     private List<WebElement> checkboxes;
 
-    @FindBy (className = "label-radio")
+    @FindBy(className = "label-radio")
     private List<WebElement> radios;
 
-    @FindBy (className = "main-content-hg")
+    @FindBy(className = "main-content-hg")
     private WebElement content;
 
-    @FindBy (className = "panel-body-list")
+    @FindBy(className = "panel-body-list")
     private WebElement list;
 
     public SecondPage(
@@ -25,19 +25,19 @@ public class SecondPage {
         PageFactory.initElements(driver, this);
     }
 
-    public List<WebElement> getCheckboxes(){
+    public List<WebElement> getCheckboxes() {
         return checkboxes;
     }
 
-    public List<WebElement> getRadios(){
+    public List<WebElement> getRadios() {
         return radios;
     }
 
-    public WebElement getContent(){
+    public WebElement getContent() {
         return content;
     }
 
-    public WebElement getList(){
+    public WebElement getList() {
         return list;
     }
 }

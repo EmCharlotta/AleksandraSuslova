@@ -1,8 +1,5 @@
 import com.epam.tc.hw3.EpamIndexPage;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Properties;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,21 +9,6 @@ import org.testng.annotations.Test;
 
 public class ExerciseOneTest {
 
-    public static String[] getLoginPass() {
-        Properties properties = new Properties();
-
-        try (InputStream input = ExerciseOneTest.class.getClassLoader().getResourceAsStream("login.properties")) {
-            properties.load(input);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String[] logPass = new String[2];
-        logPass[0] = properties.getProperty("login");
-        logPass [1] = properties.getProperty("password");
-
-        return logPass;
-    }
 
 
     @Test
@@ -42,7 +24,7 @@ public class ExerciseOneTest {
         //    3. Perform login
         EpamIndexPage epamIndexPage = new EpamIndexPage(driver);
         epamIndexPage.clickToLoginBar();
-        epamIndexPage.login(getLoginPass()[0], getLoginPass()[1]);
+        epamIndexPage.login("Roman", "Jdi1234");
         epamIndexPage.clickLoginButton();
 
         //    4. Assert Username is loggined
