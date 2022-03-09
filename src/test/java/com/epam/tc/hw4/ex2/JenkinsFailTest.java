@@ -18,6 +18,7 @@ public class JenkinsFailTest {
     public void setUp(ITestContext context) {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         driver = new ChromeDriver();
+
         context.setAttribute("driver", driver);
     }
 
