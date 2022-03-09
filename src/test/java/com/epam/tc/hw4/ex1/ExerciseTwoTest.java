@@ -11,15 +11,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ExerciseTwoTest {
+    private WebDriver driver;
+
+    @BeforeMethod
+    public void setUp(ITestContext context) {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+        driver = new ChromeDriver();
+        context.setAttribute("driver", driver);
+    }
 
     @Feature("Index and Second page testing")
     @Test
     public void exercise2() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
         //        1. Open test site by URL
         driver.get("https://jdi-testing.github.io/jdi-light/index.html");
         driver.manage().window().maximize();
