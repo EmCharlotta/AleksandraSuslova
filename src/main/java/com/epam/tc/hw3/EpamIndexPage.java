@@ -45,27 +45,27 @@ public class EpamIndexPage {
     @FindBy(id = "frame-button")
     private WebElement frameButton;
 
-    @FindBy (className = "sidebar-menu")
+    @FindBy(className = "sidebar-menu")
     private WebElement sideBar;
 
-    @FindBy (className = "navbar-nav")
+    @FindBy(className = "navbar-nav")
     private WebElement headerMenu;
 
-    @FindBy (xpath = "//*[text()='Different elements']")
+    @FindBy(xpath = "//*[text()='Different elements']")
     private WebElement differentElements;
 
     public EpamIndexPage(
-    WebDriver driver) {
-            PageFactory.initElements(driver, this);
-        }
+        WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     public void clickToLoginBar() {
         loginBar.click();
     }
 
-    public void login(String uName, String uPassword) {
-        name.sendKeys(uName);
-        pass.sendKeys(uPassword);
+    public void login(String userName, String userPassword) {
+        name.sendKeys(userName);
+        pass.sendKeys(userPassword);
     }
 
     public void clickLoginButton() {
@@ -94,20 +94,19 @@ public class EpamIndexPage {
         return frame;
     }
 
-    public WebElement getFrameButton(){
+    public WebElement getFrameButton() {
         return frameButton;
     }
 
-    public WebElement getSide(String sideItem){
+    public WebElement getSide(String sideItem) {
         return sideBar.findElement(By.linkText(sideItem));
     }
 
-    public void clickHeaderMenu(){
+    public void clickHeaderMenu() {
         headerMenu.click();
     }
 
-    public void clickDifferentElement(){
+    public void clickDifferentElement() {
         differentElements.click();
     }
-
 }

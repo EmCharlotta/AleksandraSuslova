@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+@Test
 public class ExerciseOneTest {
 
     public static String[] getLoginPass() {
