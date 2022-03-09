@@ -1,5 +1,10 @@
-import com.epam.tc.hw3.EpamIndexPage;
-import com.epam.tc.hw3.SecondPage;
+package com.epam.tc.hw4.ex1;
+
+import com.epam.tc.hw4.ex1.EpamIndexPage;
+import com.epam.tc.hw4.ex1.SecondPage;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.assertj.core.api.AssertionsForClassTypes;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +14,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class ExerciseTwoTest {
+
+    @Feature("Index and Second page testing")
     @Test
     public void exercise2() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
@@ -20,9 +27,7 @@ public class ExerciseTwoTest {
         AssertionsForClassTypes.assertThat(driver.getTitle()).isEqualTo("Home Page");
         //        3. Perform login
         EpamIndexPage epamIndexPage = new EpamIndexPage(driver);
-        epamIndexPage.clickToLoginBar();
-        epamIndexPage.login("Roman", "Jdi1234");
-        epamIndexPage.clickLoginButton();
+        performLogin(epamIndexPage, "Roman", "Jdi1234");
         //        4. Assert User name in the left-top side of screen that user is loggined
         AssertionsForClassTypes.assertThat(driver.findElement(By.className("navbar-right")).getText())
                                .contains("ROMAN IOVLEV");
@@ -56,5 +61,13 @@ public class ExerciseTwoTest {
         AssertionsForClassTypes.assertThat(list.getText()).contains("Colors: value changed to Yellow");
         //       10. Close Browser
         driver.quit();
+    }
+
+    @Story("perform login")
+    @Step
+    public void performLogin(EpamIndexPage epamIndexPage, String userName, String userPassword) {
+        epamIndexPage.clickToLoginBar();
+        epamIndexPage.login(userName, userPassword);
+        epamIndexPage.clickLoginButton();
     }
 }

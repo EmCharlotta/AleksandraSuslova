@@ -1,4 +1,6 @@
-import com.epam.tc.hw3.EpamIndexPage;
+package com.epam.tc.hw4.ex2;
+
+import com.epam.tc.hw4.ex1.EpamIndexPage;
 import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
@@ -7,10 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class ExerciseOneTest {
-
-
-
+public class JenkinsFailTest {
     @Test
     public void exercise1() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
@@ -24,7 +23,7 @@ public class ExerciseOneTest {
         //    3. Perform login
         EpamIndexPage epamIndexPage = new EpamIndexPage(driver);
         epamIndexPage.clickToLoginBar();
-        epamIndexPage.login("Roman", "Jdi1234");
+        epamIndexPage.login("Roman2", "Jdi1234");
         epamIndexPage.clickLoginButton();
 
         //    4. Assert Username is loggined

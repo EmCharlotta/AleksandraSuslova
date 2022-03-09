@@ -1,4 +1,6 @@
-package com.epam.tc.hw3;
+package com.epam.tc.hw4.ex1;
+
+import io.qameta.allure.Step;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,18 +26,22 @@ public class SecondPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step
     public List<WebElement> getCheckboxes() {
         return checkboxes;
     }
 
+    @Step
     public List<WebElement> getRadios() {
         return radios;
     }
 
+    @Step
     public WebElement getContent() {
         return content;
     }
 
+    @Step
     public WebElement getList() {
         return list;
     }

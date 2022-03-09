@@ -1,5 +1,7 @@
-package com.epam.tc.hw3;
+package com.epam.tc.hw4.ex1;
 
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
@@ -59,19 +61,23 @@ public class EpamIndexPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step
     public void clickToLoginBar() {
         loginBar.click();
     }
 
-    public void login(String uName, String uPassword) {
-        name.sendKeys(uName);
-        pass.sendKeys(uPassword);
+    @Step
+    public void login(String userName, String userPassword) {
+        name.sendKeys(userName);
+        pass.sendKeys(userPassword);
     }
 
+    @Step
     public void clickLoginButton() {
         loginButton.click();
     }
 
+    @Step
     public List<WebElement> getHeaderItems() {
         List<WebElement> list = new ArrayList<>();
         list.add(headerHome);
@@ -82,30 +88,37 @@ public class EpamIndexPage {
         return list;
     }
 
+    @Step
     public List<WebElement> getBenefits() {
         return benefits;
     }
 
+    @Step
     public List<WebElement> getBenefitsText() {
         return benefitsText;
     }
 
+    @Step
     public WebElement getFrame() {
         return frame;
     }
 
+    @Step
     public WebElement getFrameButton() {
         return frameButton;
     }
 
+    @Step
     public WebElement getSide(String sideItem) {
         return sideBar.findElement(By.linkText(sideItem));
     }
 
+    @Step
     public void clickHeaderMenu() {
         headerMenu.click();
     }
 
+    @Step
     public void clickDifferentElement() {
         differentElements.click();
     }
