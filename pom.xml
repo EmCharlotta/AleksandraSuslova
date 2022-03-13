@@ -58,6 +58,17 @@
             <artifactId>commons-io</artifactId>
             <version>2.7</version>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.2.3</version>
+        </dependency>
+
     </dependencies>
     <properties>
         <testng.version>7.4.0</testng.version>
@@ -143,9 +154,9 @@
     </build>
     <profiles>
         <profile>
-            <id>testsHw4</id>
+            <id>testsHw5</id>
             <properties>
-                <testng.suite.file>${testng.configs.path}/hw4.xml/</testng.suite.file>
+                <testng.suite.file>${testng.configs.path}/hw5.xml/</testng.suite.file>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>

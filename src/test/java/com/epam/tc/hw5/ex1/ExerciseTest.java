@@ -1,7 +1,5 @@
-package com.epam.tc.hw4.ex1;
+package com.epam.tc.hw5.ex1;
 
-import com.epam.tc.hw4.ex1.EpamIndexPage;
-import com.epam.tc.hw4.ex1.SecondPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
@@ -15,7 +13,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ExerciseTwoTest {
+public class ExerciseTest {
     private WebDriver driver;
 
     @BeforeMethod
