@@ -5,11 +5,11 @@
 
 <suite name="BasicSuite" verbose="2" parallel="none">
 
-  <test name="GithubTestViaCucumberAndTestNG">
+  <test name="TestViaCucumberAndTestNG">
 
     <classes>
 
-      <class name="com.epam.tc.hw5.ex1.ExerciseTest"/>
+      <class name="com.epam.tc.hw5.RunAcceptanceTest"/>
 
     </classes>
 

@@ -1,13 +1,14 @@
-package com.epam.tc.hw5.ex1;
+package com.epam.tc.hw5.page;
 
 import io.qameta.allure.Step;
 import java.util.List;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
-public class SecondPage {
+public class DifferentElementsPage extends AbstractPage {
 
     @FindBy(className = "label-checkbox")
     private List<WebElement> checkboxes;
@@ -21,9 +22,9 @@ public class SecondPage {
     @FindBy(className = "panel-body-list")
     private WebElement list;
 
-    public SecondPage(
+    public DifferentElementsPage(
         WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     @Step
@@ -34,6 +35,12 @@ public class SecondPage {
     @Step
     public List<WebElement> getRadios() {
         return radios;
+    }
+
+    @Step
+    public void selectDropd(String color) {
+        Select colors = new Select(content.findElement(By.className("uui-form-element")));
+        colors.selectByVisibleText(color);
     }
 
     @Step

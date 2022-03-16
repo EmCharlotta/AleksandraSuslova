@@ -1,10 +1,10 @@
-package com.epam.tc.hw5.ex1.hook;
+package com.epam.tc.hw5.hook;
 
-import com.epam.tc.hw5.ex1.context.TestContext;
+import com.epam.tc.hw5.context.TestContext;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
-//import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -14,7 +14,7 @@ public class CucumberHooks {
 
     @BeforeAll
     public static void setUpAll() {
-        //WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
         System.out.println("setUpAll");
     }
 

@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.ex1.context;
+package com.epam.tc.hw5.context;
 
 import java.util.HashMap;
 import java.util.Map;

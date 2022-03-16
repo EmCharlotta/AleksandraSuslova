@@ -1,5 +1,6 @@
-package com.epam.tc.hw5.ex1;
+package com.epam.tc.hw5.page;
 
+import com.epam.tc.hw5.page.component.MenuComponent;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import java.util.ArrayList;
@@ -8,9 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class EpamIndexPage {
+public class EpamIndexPage extends AbstractPage {
     @FindBy(className = "navbar-right")
     private WebElement loginBar;
 
@@ -50,15 +50,17 @@ public class EpamIndexPage {
     @FindBy(className = "sidebar-menu")
     private WebElement sideBar;
 
-    @FindBy(className = "navbar-nav")
-    private WebElement headerMenu;
+    private MenuComponent menuComponent;
 
     @FindBy(xpath = "//*[text()='Different elements']")
     private WebElement differentElements;
 
+    @FindBy(xpath = "(//ul[@role='menu']/li)[5]")
+    private WebElement userTable;
+
     public EpamIndexPage(
         WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     @Step
@@ -89,6 +91,30 @@ public class EpamIndexPage {
     }
 
     @Step
+    public void open() {
+        driver.get("https://jdi-testing.github.io/jdi-light/index.html");
+        driver.manage().window().maximize();
+    }
+
+    @Story("perform login")
+    @Step
+    public void performLogin(String userName, String userPassword) {
+        clickToLoginBar();
+        login(userName, userPassword);
+        clickLoginButton();
+    }
+
+    @Step
+    public String getTitle() {
+        return driver.getTitle();
+    }
+
+    @Step
+    public String getUserName() {
+        return driver.findElement(By.className("navbar-right")).getText();
+    }
+
+    @Step
     public List<WebElement> getBenefits() {
         return benefits;
     }
@@ -115,11 +141,17 @@ public class EpamIndexPage {
 
     @Step
     public void clickHeaderMenu() {
-        headerMenu.click();
+        menuComponent = new MenuComponent(driver);
+        menuComponent.clickHeader("navbar-nav");
     }
 
     @Step
-    public void clickDifferentElement() {
-        differentElements.click();
+    public void clickButton(String button) {
+        if (button.equals("Different Elements")) {
+            differentElements.click();
+        }
+        if (button.equals("User Table")) {
+            userTable.click();
+        }
     }
 }
