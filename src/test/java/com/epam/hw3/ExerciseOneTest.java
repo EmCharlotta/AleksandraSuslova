@@ -1,3 +1,5 @@
+package com.epam.hw3;
+
 import com.epam.tc.hw3.EpamIndexPage;
 import java.io.IOException;
 import java.io.InputStream;
