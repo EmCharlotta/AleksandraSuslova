@@ -55,7 +55,7 @@ public class EpamIndexPage extends AbstractPage {
     @FindBy(xpath = "//*[text()='Different elements']")
     private WebElement differentElements;
 
-    @FindBy(xpath = "(//ul[@role='menu']/li)[5]")
+    @FindBy(xpath = "(//ul[@role='menu']/li)[6]")
     private WebElement userTable;
 
     public EpamIndexPage(

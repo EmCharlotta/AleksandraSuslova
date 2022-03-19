@@ -7,3 +7,4 @@ Feature: User Table functionality
     And I click on 'User Table' button in Service dropdown
     When I select vip checkbox for 'Sergey Ivan'
     Then for 'Sergey Ivan' there is a log row 'Vip: condition changed to true'
+
