@@ -1,7 +1,5 @@
-package com.epam.tc.hw4.ex1;
+package com.epam.tc.hw6;
 
-import com.epam.tc.hw4.ex1.EpamIndexPage;
-import com.epam.tc.hw4.ex1.SecondPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;

@@ -1,6 +1,5 @@
-package com.epam.tc.hw4.ex1;
+package com.epam.tc.hw6;
 
-import com.epam.tc.hw4.ex1.EpamIndexPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
@@ -11,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
-import org.testng.ITestListener;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

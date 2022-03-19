@@ -1,4 +1,4 @@
-package com.epam.tc.hw4.ex1;
+package com.epam.tc.hw6;
 
 import io.qameta.allure.Step;
 import java.util.List;

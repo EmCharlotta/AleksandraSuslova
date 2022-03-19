@@ -1,4 +1,4 @@
-package com.epam.tc.hw4.ex1;
+package com.epam.tc.hw6;
 
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
