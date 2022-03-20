@@ -1,5 +1,6 @@
 package com.epam.tc.hw6;
 
+import com.epam.tc.hw6.service.webdriver.WebDriverProvider;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
@@ -18,9 +19,7 @@ public class ExerciseOneTest {
 
     @BeforeMethod
     public void setUp(ITestContext context) {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        driver = new ChromeDriver();
-        context.setAttribute("driver", driver);
+        driver = WebDriverProvider.getDriver();
     }
 
     @Feature("index page testing")

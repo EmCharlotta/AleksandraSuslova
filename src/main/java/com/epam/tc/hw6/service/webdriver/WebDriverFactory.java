@@ -2,9 +2,12 @@ package com.epam.tc.hw6.service.webdriver;
 
 import com.epam.tc.hw6.service.exception.IllegalBrowserNameException;
 import com.epam.tc.hw6.service.exception.WebDriverLaunchTypeException;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 @NoArgsConstructor(access = AccessLevel.NONE)
 public final class WebDriverFactory {
@@ -25,7 +28,7 @@ public final class WebDriverFactory {
     }
 
     private static WebDriver createLocalDriver(final Browser browser) {
-        WebDriver driver;
+        WebDriver driver = null;
 
         switch (browser) {
             case CHROME:
@@ -36,14 +39,17 @@ public final class WebDriverFactory {
                 break;
             default:
                 throw new IllegalBrowserNameException();
-                return driver;
         }
+        return driver;
     }
 
     private static WebDriver createFirefoxDriver() {
-        WebDriverManager
+        WebDriverManager.chromedriver().setup();
+        return new ChromeDriver();
     }
 
     private static WebDriver createChromeDriver() {
+        WebDriverManager.firefoxdriver().setup();
+        return new FirefoxDriver();
     }
 }
