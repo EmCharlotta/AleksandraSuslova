@@ -25,4 +25,5 @@ public final class WebDriverProvider {
         driver.quit();
         driver = null;
     }
+
 }

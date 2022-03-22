@@ -18,7 +18,7 @@ public class ExerciseTwoTest {
     private WebDriver driver;
 
     @BeforeMethod
-    public void setUp(ITestContext context) {
+    public void setUp() {
         driver = WebDriverProvider.getDriver();
     }
 
