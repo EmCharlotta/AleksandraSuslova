@@ -9,6 +9,7 @@ java -Dwebdriver.chrome.driver=/Users/EmCharlotte/.cache/selenium/chromedriver/m
 -Dwebdriver.firefox.driver=/Users/EmCharlotte/.cache/selenium/geckodriver/mac64/97.0.30.0/geckodriver  -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.97.144:4444/grid/register/ -browser "browserName=firefox"
 
 3. Перейти в папку проекта и запустить тесты
+
 cd IdeaProjects/selenium
 mvn clean test -P hw6 -Dlaunch.type=local -Dbrowser.name=chrome
 mvn clean test -P hw6 -Dlaunch.type=local -Dbrowser.name=firefox
