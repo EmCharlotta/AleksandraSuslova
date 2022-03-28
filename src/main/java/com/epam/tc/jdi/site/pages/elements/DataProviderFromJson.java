@@ -11,13 +11,9 @@ public class DataProviderFromJson {
 
     @DataProvider(name = "data_from_Json")
     public Object[][] dataProviding() {
-        DataSetForTest[] dataSetForTests = readJson();
-        for (DataSetForTest d: dataSetForTests){
-            d.color
-        }
 
-
-        return new Object[][];
+        Object[] dataSetForTests = readJson();
+        return (Object[][]) dataSetForTests;
     }
 
     public DataSetForTest[] readJson() {
