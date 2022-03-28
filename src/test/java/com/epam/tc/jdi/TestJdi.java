@@ -9,6 +9,9 @@ import static com.epam.tc.jdi.site.pages.IndexPage.metalsAndColors;
 import static com.epam.tc.jdi.site.pages.MetalsPage.submitButton;
 
 import com.epam.tc.jdi.site.pages.EpamSite;
+import com.epam.tc.jdi.site.pages.elements.DataProviderFromJson;
+import com.epam.tc.jdi.site.pages.elements.DataSetForTest;
+import com.google.gson.Gson;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -19,7 +22,7 @@ public class TestJdi {
         initElements(EpamSite.class);
     }
 
-    @Test
+    @Test (dataProviderClass = DataProviderFromJson.class, dataProvider = "data_from_Json")
     public void indexAndMetalsPagesTest() {
         indexPage.open();
         loginBar.click();
@@ -27,6 +30,7 @@ public class TestJdi {
         indexPage.checkOpened();
 
         metalsAndColors.click();
+
 
         //fill form with data providers
 
