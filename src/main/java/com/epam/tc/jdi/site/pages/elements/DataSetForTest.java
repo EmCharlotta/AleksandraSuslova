@@ -1,21 +1,27 @@
 package com.epam.tc.jdi.site.pages.elements;
 
-import java.util.List;
+import java.util.Arrays;
 
 public class DataSetForTest {
 
-    public List<Integer> sum;
-    public List<String> elementsList;
+    public int[] summary;
+    public String[] elements;
     public String color;
-    public String metal;
-    public List<String> vegetables;
+    public String metals;
+    public String[] vegetables;
 
-    public DataSetForTest(List<Integer> sum, List<String> elementsList, String color, String metal,
-                          List<String> vegetables) {
-        this.sum = sum;
-        this.elementsList = elementsList;
+    public DataSetForTest(int[] sum, String[] elementsList, String color, String metal, String[] vegetables) {
+        this.summary = sum;
+        this.elements = elementsList;
         this.color = color;
-        this.metal = metal;
+        this.metals = metal;
         this.vegetables = vegetables;
+    }
+
+    @Override
+    public String toString() {
+        return "DataSetForTest{" + "summary=" + Arrays.toString(summary) + ", elements=" + Arrays.toString(elements)
+            + ", color='" + color + '\'' + ", metals='" + metals + '\'' + ", vegetables=" + Arrays.toString(vegetables)
+            + '}';
     }
 }

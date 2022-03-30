@@ -1,6 +1,7 @@
 package com.epam.tc.jdi;
 
-import static com.epam.jdi.light.ui.html.PageFactory.initElements;
+import static com.epam.jdi.light.elements.init.PageFactory.initElements;
+//import static com.epam.jdi.light.ui.html.PageFactory.initElements;
 import static com.epam.tc.jdi.site.pages.EpamSite.indexPage;
 import static com.epam.tc.jdi.site.pages.IndexPage.loginBar;
 import static com.epam.tc.jdi.site.pages.IndexPage.loginForm;
@@ -33,12 +34,11 @@ public class TestJdi {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-
+        initElements(driver, EpamSite.class);
     }
 
     @Test(dataProviderClass = DataProviderFromJson.class, dataProvider = "data_from_Json")
     public void indexAndMetalsPagesTest(DataSetForTest dataSetForTest) {
-        initElements(driver, EpamSite.class);
         indexPage.open();
         loginBar.click();
         loginForm.loginAs(ROMAN);
@@ -46,33 +46,33 @@ public class TestJdi {
 
         metalsAndColors.click();
 
-        radioOdd.select(String.valueOf(dataSetForTest.sum.get(0)));
-        radioEven.select(String.valueOf(dataSetForTest.sum.get(1)));
+        radioOdd.select(String.valueOf(dataSetForTest.summary[0]));
+        radioEven.select(String.valueOf(dataSetForTest.summary[1]));
 
-        for (String str : dataSetForTest.elementsList) {
+        for (String str : dataSetForTest.elements) {
             weather.check(str);
         }
 
         colors.select(dataSetForTest.color);
-        metals.select(dataSetForTest.metal);
+        metals.select(dataSetForTest.metals);
 
         for (String str : dataSetForTest.vegetables) {
             vegetables.check(str);
         }
 
         submitButton.click();
-        int sum = dataSetForTest.sum.get(0) + dataSetForTest.sum.get(1);
+        int sum = dataSetForTest.summary[0] + dataSetForTest.summary[1];
         result.assertThat().text(containsString(String.valueOf("Summary: " + sum)));
-        result.assertThat().text(containsString("Metal: " + dataSetForTest.metal));
+        result.assertThat().text(containsString("Metal: " + dataSetForTest.metals));
         result.assertThat().text(containsString("Color: " + dataSetForTest.color));
 
-        String elem = dataSetForTest.elementsList.get(0);
-        for (int i = 1; i < dataSetForTest.elementsList.size(); i++) {
-            elem = elem + ", " + dataSetForTest.elementsList.get(i);
+        String elem = dataSetForTest.elements[0];
+        for (int i = 1; i < dataSetForTest.elements.length; i++) {
+            elem = elem + ", " + dataSetForTest.elements[i];
         }
-        String veg = dataSetForTest.vegetables.get(0);
-        for (int i = 1; i < dataSetForTest.vegetables.size(); i++) {
-            veg = veg + ", " + dataSetForTest.vegetables.get(i);
+        String veg = dataSetForTest.vegetables[0];
+        for (int i = 1; i < dataSetForTest.vegetables.length; i++) {
+            veg = veg + ", " + dataSetForTest.vegetables[i];
         }
 
         result.assertThat().text(containsString("Elements: " + elem));
