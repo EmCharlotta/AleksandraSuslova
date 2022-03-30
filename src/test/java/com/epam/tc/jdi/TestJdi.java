@@ -1,7 +1,6 @@
 package com.epam.tc.jdi;
 
-import static com.epam.jdi.light.elements.init.PageFactory.initElements;
-import static com.epam.tc.hw6.temp.TemporaryUser.ROMAN;
+import static com.epam.jdi.light.ui.html.PageFactory.initElements;
 import static com.epam.tc.jdi.site.pages.EpamSite.indexPage;
 import static com.epam.tc.jdi.site.pages.IndexPage.loginBar;
 import static com.epam.tc.jdi.site.pages.IndexPage.loginForm;
@@ -17,11 +16,11 @@ import static com.epam.tc.jdi.site.pages.MetalsPage.weather;
 import static com.epam.tc.jdi.site.pages.elements.DefaultUser.ROMAN;
 import static org.hamcrest.Matchers.containsString;
 
-import com.epam.tc.hw6.service.webdriver.WebDriverProvider;
 import com.epam.tc.jdi.site.pages.EpamSite;
 import com.epam.tc.jdi.site.pages.elements.DataProviderFromJson;
 import com.epam.tc.jdi.site.pages.elements.DataSetForTest;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -31,12 +30,15 @@ public class TestJdi {
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
-        driver = WebDriverProvider.getDriver();
-        initElements(EpamSite.class);
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
     }
 
     @Test(dataProviderClass = DataProviderFromJson.class, dataProvider = "data_from_Json")
     public void indexAndMetalsPagesTest(DataSetForTest dataSetForTest) {
+        initElements(driver, EpamSite.class);
         indexPage.open();
         loginBar.click();
         loginForm.loginAs(ROMAN);

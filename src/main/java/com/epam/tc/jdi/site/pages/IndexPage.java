@@ -1,16 +1,15 @@
 package com.epam.tc.jdi.site.pages;
 
-import com.epam.jdi.light.elements.complex.Menu;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.FindBy;
 import com.epam.jdi.light.elements.pageobjects.annotations.Title;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
-import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
-import com.epam.jdi.light.elements.pageobjects.annotations.locators.XPath;
-import com.epam.jdi.light.ui.html.elements.common.Button;
+import com.epam.jdi.light.elements.pageobjects.annotations.simple.Css;
+import com.epam.jdi.light.elements.pageobjects.annotations.simple.XPath;
+import com.epam.jdi.light.ui.html.common.Button;
 import com.epam.tc.jdi.site.pages.elements.LoginForm;
 
-@Url("index.html")
+@Url("/index.html")
 @Title("Home Page")
 public class IndexPage extends WebPage {
 

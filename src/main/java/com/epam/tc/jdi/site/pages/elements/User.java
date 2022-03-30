@@ -1,6 +1,6 @@
 package com.epam.tc.jdi.site.pages.elements;
 
-import com.jdiai.tools.DataClass;
+import com.epam.jdi.tools.DataClass;
 
 public class User extends DataClass<User> {
     

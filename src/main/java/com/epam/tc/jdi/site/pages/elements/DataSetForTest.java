@@ -18,10 +18,4 @@ public class DataSetForTest {
         this.metal = metal;
         this.vegetables = vegetables;
     }
-
-    //      "summary": [1,8],  -- всегда два
-    //    "elements": ["Water", "Fire"], --может быть от 1 до 4
-    //        "color": "Red",
-    //        "metals": "Gold",
-    //        "vegetables": ["Cucumber"]  -- может быть от 1 до 4
 }
