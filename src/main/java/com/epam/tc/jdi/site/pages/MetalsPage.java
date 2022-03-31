@@ -1,16 +1,15 @@
 package com.epam.tc.jdi.site.pages;
 
-
-import com.epam.jdi.light.elements.base.UIElement;
+import com.epam.jdi.light.elements.common.UIElement;
+import com.epam.jdi.light.elements.complex.Checklist;
+import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.FindBy;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
-import com.epam.jdi.light.elements.pageobjects.annotations.objects.JDropdown;
-import com.epam.jdi.light.ui.html.common.Button;
-import com.epam.jdi.light.ui.html.complex.Checklist;
-import com.epam.jdi.light.ui.html.complex.Dropdown;
-import com.epam.jdi.light.ui.html.complex.MultiSelector;
-import com.epam.jdi.light.ui.html.complex.RadioButtons;
+import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
+import com.epam.jdi.light.ui.html.elements.common.Button;
+import com.epam.jdi.light.ui.html.elements.complex.MultiSelector;
+import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
 
 @Url("/metals-colors.html")
 public class MetalsPage extends WebPage {

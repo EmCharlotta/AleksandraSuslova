@@ -34,7 +34,7 @@ public class TestJdi {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        initElements(driver, EpamSite.class);
+        initElements(EpamSite.class);
     }
 
     @Test(dataProviderClass = DataProviderFromJson.class, dataProvider = "data_from_Json")

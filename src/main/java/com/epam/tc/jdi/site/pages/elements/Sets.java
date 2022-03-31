@@ -1,6 +1,5 @@
 package com.epam.tc.jdi.site.pages.elements;
 
-import java.util.List;
 
 public class Sets {
     private DataSetForTest data_1;
