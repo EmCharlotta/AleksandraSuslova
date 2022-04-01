@@ -1,14 +1,13 @@
 package com.epam.tc.jdi;
 
 import static com.epam.jdi.light.elements.init.PageFactory.initElements;
-//import static com.epam.jdi.light.ui.html.PageFactory.initElements;
 import static com.epam.tc.jdi.site.pages.EpamSite.indexPage;
 import static com.epam.tc.jdi.site.pages.IndexPage.loginBar;
 import static com.epam.tc.jdi.site.pages.IndexPage.loginForm;
 import static com.epam.tc.jdi.site.pages.IndexPage.metalsAndColors;
 import static com.epam.tc.jdi.site.pages.MetalsPage.colors;
+import static com.epam.tc.jdi.site.pages.MetalsPage.logout;
 import static com.epam.tc.jdi.site.pages.MetalsPage.metals;
-import static com.epam.tc.jdi.site.pages.MetalsPage.radioEven;
 import static com.epam.tc.jdi.site.pages.MetalsPage.radioOdd;
 import static com.epam.tc.jdi.site.pages.MetalsPage.result;
 import static com.epam.tc.jdi.site.pages.MetalsPage.submitButton;
@@ -17,23 +16,19 @@ import static com.epam.tc.jdi.site.pages.MetalsPage.weather;
 import static com.epam.tc.jdi.site.pages.elements.DefaultUser.ROMAN;
 import static org.hamcrest.Matchers.containsString;
 
+import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.tc.jdi.site.pages.EpamSite;
 import com.epam.tc.jdi.site.pages.elements.DataProviderFromJson;
 import com.epam.tc.jdi.site.pages.elements.DataSetForTest;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.By;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class TestJdi {
 
-    private WebDriver driver;
-
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
         initElements(EpamSite.class);
     }
 
@@ -46,8 +41,48 @@ public class TestJdi {
 
         metalsAndColors.click();
 
-        radioOdd.select(String.valueOf(dataSetForTest.summary[0]));
-        radioEven.select(String.valueOf(dataSetForTest.summary[1]));
+        int val1 = dataSetForTest.summary[0];
+        int val2 = dataSetForTest.summary[1];
+
+        String radio1 = null;
+        String radio2 = null;
+
+        switch (val1) {
+            case 1:
+                radio1 = "p1";
+                break;
+            case 3:
+                radio1 = "p2";
+                break;
+            case 5:
+                radio1 = "p3";
+                break;
+            case 7:
+                radio1 = "p4";
+                break;
+            default:
+                throw new IllegalArgumentException("Wrong input for odd radiobutton number value");
+        }
+        switch (val2) {
+            case 2:
+                radio2 = "p5";
+                break;
+            case 4:
+                radio2 = "p6";
+                break;
+            case 6:
+                radio2 = "p7";
+                break;
+            case 8:
+                radio2 = "p8";
+                break;
+            default:
+                throw new IllegalArgumentException("Wrong input for even radiobutton number value");
+        }
+
+        System.out.println(radioOdd.list());
+        new UIElement(By.id(radio1)).click();
+        new UIElement(By.id(radio2)).click();
 
         for (String str : dataSetForTest.elements) {
             weather.check(str);
@@ -62,7 +97,7 @@ public class TestJdi {
 
         submitButton.click();
         int sum = dataSetForTest.summary[0] + dataSetForTest.summary[1];
-        result.assertThat().text(containsString(String.valueOf("Summary: " + sum)));
+        result.assertThat().text(containsString("Summary: " + sum));
         result.assertThat().text(containsString("Metal: " + dataSetForTest.metals));
         result.assertThat().text(containsString("Color: " + dataSetForTest.color));
 
@@ -77,5 +112,11 @@ public class TestJdi {
 
         result.assertThat().text(containsString("Elements: " + elem));
         result.assertThat().text(containsString("Vegetables: " + veg));
+    }
+
+    @AfterMethod
+    public void after() {
+        loginBar.click();
+        logout.click();
     }
 }

@@ -2,8 +2,8 @@ package com.epam.tc.jdi.site.pages.elements;
 
 
 public class Sets {
-    private DataSetForTest data_1;
     private DataSetForTest data_2;
+    private DataSetForTest data_1;
     private DataSetForTest data_3;
     private DataSetForTest data_4;
     private DataSetForTest data_5;

@@ -12,8 +12,8 @@ public class DataProviderFromJson {
 
         Sets sets = readJson();
         DataSetForTest[][] dataSetForTest = new DataSetForTest[5][1];
-        dataSetForTest[0][0] = sets.get1();
-        dataSetForTest[1][0] = sets.get2();
+        dataSetForTest[0][0] = sets.get2();
+        dataSetForTest[1][0] = sets.get1();
         dataSetForTest[2][0] = sets.get3();
         dataSetForTest[3][0] = sets.get4();
         dataSetForTest[4][0] = sets.get5();
