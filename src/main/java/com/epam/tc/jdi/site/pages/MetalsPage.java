@@ -19,10 +19,8 @@ public class MetalsPage extends WebPage {
     @FindBy(id = "submit-button")
     public static Button submitButton;
 
-    @FindBy(id = "odds-selector")
-    public static RadioButtons radioOdd;
-    @FindBy(id = "even-selector")
-    public static RadioButtons radioEven;
+    @FindBy(className = "radio")
+    public static RadioButtons radios;
 
     @FindBy(id = "elements-checklist")
     public static Checklist weather;

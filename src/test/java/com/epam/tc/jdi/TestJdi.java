@@ -8,7 +8,7 @@ import static com.epam.tc.jdi.site.pages.IndexPage.metalsAndColors;
 import static com.epam.tc.jdi.site.pages.MetalsPage.colors;
 import static com.epam.tc.jdi.site.pages.MetalsPage.logout;
 import static com.epam.tc.jdi.site.pages.MetalsPage.metals;
-import static com.epam.tc.jdi.site.pages.MetalsPage.radioOdd;
+import static com.epam.tc.jdi.site.pages.MetalsPage.radios;
 import static com.epam.tc.jdi.site.pages.MetalsPage.result;
 import static com.epam.tc.jdi.site.pages.MetalsPage.submitButton;
 import static com.epam.tc.jdi.site.pages.MetalsPage.vegetables;
@@ -44,45 +44,44 @@ public class TestJdi {
         int val1 = dataSetForTest.summary[0];
         int val2 = dataSetForTest.summary[1];
 
-        String radio1 = null;
-        String radio2 = null;
+        int radio1 = 0;
+        int radio2 = 0;
 
         switch (val1) {
             case 1:
-                radio1 = "p1";
+                radio1 = 1;
                 break;
             case 3:
-                radio1 = "p2";
+                radio1 = 2;
                 break;
             case 5:
-                radio1 = "p3";
+                radio1 = 3;
                 break;
             case 7:
-                radio1 = "p4";
+                radio1 = 4;
                 break;
             default:
                 throw new IllegalArgumentException("Wrong input for odd radiobutton number value");
         }
         switch (val2) {
             case 2:
-                radio2 = "p5";
+                radio2 = 5;
                 break;
             case 4:
-                radio2 = "p6";
+                radio2 = 6;
                 break;
             case 6:
-                radio2 = "p7";
+                radio2 = 7;
                 break;
             case 8:
-                radio2 = "p8";
+                radio2 = 8;
                 break;
             default:
                 throw new IllegalArgumentException("Wrong input for even radiobutton number value");
         }
 
-        System.out.println(radioOdd.list());
-        new UIElement(By.id(radio1)).click();
-        new UIElement(By.id(radio2)).click();
+        radios.get(radio1).click();
+        radios.get(radio2).click();
 
         for (String str : dataSetForTest.elements) {
             weather.check(str);
