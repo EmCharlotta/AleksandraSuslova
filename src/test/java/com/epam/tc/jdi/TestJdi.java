@@ -11,16 +11,15 @@ import static com.epam.tc.jdi.site.pages.MetalsPage.metals;
 import static com.epam.tc.jdi.site.pages.MetalsPage.radios;
 import static com.epam.tc.jdi.site.pages.MetalsPage.result;
 import static com.epam.tc.jdi.site.pages.MetalsPage.submitButton;
+import static com.epam.tc.jdi.site.pages.MetalsPage.veg;
 import static com.epam.tc.jdi.site.pages.MetalsPage.vegetables;
 import static com.epam.tc.jdi.site.pages.MetalsPage.weather;
 import static com.epam.tc.jdi.site.pages.elements.DefaultUser.ROMAN;
 import static org.hamcrest.Matchers.containsString;
 
-import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.tc.jdi.site.pages.EpamSite;
 import com.epam.tc.jdi.site.pages.elements.DataProviderFromJson;
 import com.epam.tc.jdi.site.pages.elements.DataSetForTest;
-import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -84,14 +83,54 @@ public class TestJdi {
         radios.get(radio2).click();
 
         for (String str : dataSetForTest.elements) {
-            weather.check(str);
+            int x = 0;
+            switch (str) {
+                case "Water":
+                    x = 1;
+                    break;
+                case "Earth":
+                    x = 2;
+                    break;
+                case "Wind":
+                    x = 3;
+                    break;
+                case "Fire":
+                    x = 4;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Wrong input for element index number value");
+            }
+            weather.get(x).click();
         }
 
         colors.select(dataSetForTest.color);
         metals.select(dataSetForTest.metals);
 
+        veg.click();
+
+        vegetables.get(7).click();
+
         for (String str : dataSetForTest.vegetables) {
-            vegetables.check(str);
+            int x = 0;
+            switch (str) {
+                case "Cucumber":
+                    x = 5;
+                    break;
+                case "Tomato":
+                    x = 6;
+                    break;
+                case "Vegetables":
+                    x = 7;
+                    break;
+                case "Onion":
+                    x = 8;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Wrong input for element index number value");
+            }
+            if (vegetables.get(x).isDeselected()) {
+                vegetables.get(x).click();
+            }
         }
 
         submitButton.click();
@@ -104,13 +143,13 @@ public class TestJdi {
         for (int i = 1; i < dataSetForTest.elements.length; i++) {
             elem = elem + ", " + dataSetForTest.elements[i];
         }
-        String veg = dataSetForTest.vegetables[0];
+        String veg2 = dataSetForTest.vegetables[0];
         for (int i = 1; i < dataSetForTest.vegetables.length; i++) {
-            veg = veg + ", " + dataSetForTest.vegetables[i];
+            veg2 = veg2 + ", " + dataSetForTest.vegetables[i];
         }
 
         result.assertThat().text(containsString("Elements: " + elem));
-        result.assertThat().text(containsString("Vegetables: " + veg));
+        result.assertThat().text(containsString("Vegetables: " + veg2));
     }
 
     @AfterMethod

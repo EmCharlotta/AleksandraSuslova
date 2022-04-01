@@ -2,6 +2,7 @@ package com.epam.tc.jdi.site.pages;
 
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.Checklist;
+import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.FindBy;
@@ -22,8 +23,8 @@ public class MetalsPage extends WebPage {
     @FindBy(className = "radio")
     public static RadioButtons radios;
 
-    @FindBy(id = "elements-checklist")
-    public static Checklist weather;
+    @FindBy(className = "checkbox")
+    public static WebList weather;
 
     @FindBy(id = "colors")
     @JDropdown
@@ -33,8 +34,11 @@ public class MetalsPage extends WebPage {
     @JDropdown
     public static Dropdown metals;
 
-    @FindBy(id = "vegetables")
-    public static MultiSelector vegetables;
+    @FindBy(id = "salad-dropdown")
+    public static UIElement veg;
+
+    @FindBy(className = "checkbox")
+    public static WebList vegetables;
 
     @FindBy (className = "info-panel-body-result")
     public static UIElement result;
