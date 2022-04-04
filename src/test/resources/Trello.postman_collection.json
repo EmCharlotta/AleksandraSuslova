@@ -1,0 +1,759 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Trello",
+		"_postman_id": "d5918a8e-7bf7-e481-8e89-fec8eccf4b56",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "board",
+			"description": "",
+			"item": [
+				{
+					"name": "Create new Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Your test name\"] = jsonData.name === \"Board9\";",
+									"tests[\"permission level\"] = jsonData.prefs.permissionLevel === \"private\";",
+									"",
+									"postman.setEnvironmentVariable(\"TestBoardId\", jsonData.id);",
+									"",
+									"",
+									"",
+									"postman.clearGlobalVariable(\"TestListId\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/boards/?name=Board9&key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"boards",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Board9",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get board",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/boards/5gsbePrl?key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"boards",
+								"5gsbePrl"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "change board name",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/boards/5gsbePrl?key={{key}}&token={{token}}&name=newName",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"boards",
+								"5gsbePrl"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "name",
+									"value": "newName",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "delete board",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/boards/tf7OFxs8?key={{key}}&token={{token}}&name=newName",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"boards",
+								"tf7OFxs8"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "name",
+									"value": "newName",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get lists of board",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/boards/5gsbePrl/lists?key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"boards",
+								"5gsbePrl",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "list",
+			"description": "",
+			"item": [
+				{
+					"name": "move list to another board",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/lists/624a8aab11d5e66c7eaa27c9?idBoard=624a860b0a44fe1e8fc48f9d&key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"lists",
+								"624a8aab11d5e66c7eaa27c9"
+							],
+							"query": [
+								{
+									"key": "idBoard",
+									"value": "624a860b0a44fe1e8fc48f9d",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"created list belongs to board from 'create Board' test\"] = jsonData.idBoard === postman.getEnvironmentVariable(\"TestBoardId\");",
+									"",
+									"postman.setEnvironmentVariable(\"TestListId\", jsonData.id);",
+									"",
+									"tests[\"created list is not closed\"] = jsonData.closed === false;"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/lists/?name=List1438&idBoard={{TestBoardId}}&key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"lists",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "List1438",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "idBoard",
+									"value": "{{TestBoardId}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get list by id",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/lists/624a8509c8a8a21810121f64?&key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"lists",
+								"624a8509c8a8a21810121f64"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "",
+									"value": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get cards in list",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/lists/{{нужно сделать list id in newName board}}/cards?key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"lists",
+								"{{нужно сделать list id in newName board}}",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "archive list",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/lists/624a8509c8a8a21810121f64/closed?key={{key}}&token={{token}}&value=true",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"lists",
+								"624a8509c8a8a21810121f64",
+								"closed"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "value",
+									"value": "true",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "unarchive the list",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/lists/624a8509c8a8a21810121f64/closed?key={{key}}&token={{token}}&value=false",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"lists",
+								"624a8509c8a8a21810121f64",
+								"closed"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "value",
+									"value": "false",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get board list is on",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/lists/624a8509c8a8a21810121f64/board?&key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"lists",
+								"624a8509c8a8a21810121f64",
+								"board"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "",
+									"value": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cards",
+			"description": "",
+			"item": [
+				{
+					"name": "create card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"tests[\"created card belongs to board from 'create Board' test\"] = jsonData.idBoard === postman.getEnvironmentVariable(\"TestBoardId\");",
+									"",
+									"tests[\"created card belongs to list from 'create List' test\"] = jsonData.idList === postman.getEnvironmentVariable(\"TestListId\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/cards?idList={{TestListId}}&name=card1439&key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"cards"
+							],
+							"query": [
+								{
+									"key": "idList",
+									"value": "{{TestListId}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "name",
+									"value": "card1439",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get card by id",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}/cards/{{cardCard id}}?key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"cards",
+								"{{cardCard id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "delete card by id",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}//cards/624a922fffb06e130424300a?key={{key}}&token={{token}}",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"",
+								"cards",
+								"624a922fffb06e130424300a"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update card description",
+					"request": {
+						"url": {
+							"raw": "https://{{env}}/{{version}}//cards/{{cardCard id}}?key={{key}}&token={{token}}&desc=this is a new card",
+							"protocol": "https",
+							"host": [
+								"{{env}}"
+							],
+							"path": [
+								"{{version}}",
+								"",
+								"cards",
+								"{{cardCard id}}"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{key}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "desc",
+									"value": "this is a new card",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
